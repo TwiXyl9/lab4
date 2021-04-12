@@ -10,11 +10,11 @@ namespace lab4
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            int n = 0;
+            long n = 0;
             string locale;
             try
             {
-                n = Convert.ToInt32(args[0]);
+                n = Convert.ToInt64(args[0]);
             }
             catch
             {
@@ -28,12 +28,12 @@ namespace lab4
             {
                 locale = args[1].Substring(0,2);
                 PeopleInitializer peopleInitializer = new PeopleInitializer(n, locale);
-                Console.WriteLine(peopleInitializer.Initialization());
+                peopleInitializer.Initialization();
             }
             else
             {
                 throw new Exception("The second parameter is not correct!You should use en_US, ru_RU or uk_UA");
-            }   
+            }
         }
     }
 }
