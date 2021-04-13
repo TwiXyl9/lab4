@@ -14,17 +14,19 @@ namespace lab4
             this.numOfPeople = numOfPeople;
             this.locale = locale;
         }
-        public void Initialization()
+        public List<Person> Initialization()
         {
             var dataCreator = new Faker<Person>(locale)
                 .RuleFor(x => x.FullName, f => f.Name.FullName())
                 .RuleFor(x => x.AdressLine, f => f.Address.FullAddress())
                 .RuleFor(x => x.PhoneNumber, f => f.Phone.PhoneNumber());
+            List<Person> people = new List<Person>();
             for (long i = 0; i < numOfPeople; i++)
             {
                 Person person = dataCreator.Generate();
-                Console.WriteLine(person.FullName + "; " + person.AdressLine + "; " + person.PhoneNumber + ";");
+                people.Add(person);
             }
+            return people;
         }
     }
 }

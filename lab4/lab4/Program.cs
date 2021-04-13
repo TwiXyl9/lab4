@@ -27,8 +27,10 @@ namespace lab4
             if(args[1] == "en_US" || args[1] == "ru_RU" || args[1] == "uk_UA")
             {
                 locale = args[1].Substring(0,2);
+                ServiceStack.Text.CsvConfig.ItemSeperatorString = ";";
                 PeopleInitializer peopleInitializer = new PeopleInitializer(n, locale);
-                peopleInitializer.Initialization();
+                string csvstring = CsvSerializer.SerializeToCsv(peopleInitializer.Initialization());
+                Console.WriteLine(csvstring);
             }
             else
             {
